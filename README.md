@@ -35,7 +35,14 @@ The program allows the user to:
 This project actively uses 3 data structures, the Stack, the 3D Array, and StringBuilder
 
 Algorithm 1: Base-29 Encoding
-
+O(N)
 Algorithm 2: Base-29 Decoding
-
+O(N2)
 Algorithm 3: Deterministic Pseudo-Random Seeding
+O(1)
+
+I encountered a problem with a communication bewteen the search engine and the page generator, i was getting dull responses when i looked for a string, a rewrite of the page generator was needed
+
+using a stringbuilder to append the decompressed base 29 ad reversing the output proved to save a lot of time
+
+for version 2, i could interpret the base 29 values visually, as an image, a canvas.

@@ -1,3 +1,5 @@
+// Generates the text content of a page based on a LibraryAddress. It decodes the Hex ID to create the initial text and then fills the rest of the page with deterministic "noise" based on the address.
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -39,5 +41,5 @@ public class PageGenerator {
         }
 
         return finalPage.toString();
-    }
+    }   // padding section by gemini ai
 }

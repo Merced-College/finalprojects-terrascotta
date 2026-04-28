@@ -1,3 +1,5 @@
+// manages main menu loop and user input, delegates to LibraryUI for navigation and search functionality, and handles program termination.
+
 import java.util.Scanner;
 
 public class Main {

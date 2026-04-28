@@ -1,3 +1,5 @@
+// handles the logic of converting user input into a LibraryAddress, which is then used to generate the page content. The conversion uses a base-29 encoding of the input text to create a unique Hex ID for the address, and random values for the wall, shelf, volume, and page number.
+
 import java.math.BigInteger;
 import java.util.Random;
 
@@ -21,4 +23,6 @@ public class SearchEngine {
         Random r = new Random();
         return new LibraryAddress(hexId, r.nextInt(4)+1, r.nextInt(5)+1, r.nextInt(32)+1, r.nextInt(410)+1);
     }
+
+    //biginteger conversion aided by gemini ai
 }

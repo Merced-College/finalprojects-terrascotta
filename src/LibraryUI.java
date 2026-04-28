@@ -1,3 +1,6 @@
+// Main user interface for the library navigation system. Handles user input, displays page content, and manages navigation history.
+
+
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Stack; // DATA STRUCTURE #1: Stack for history
@@ -53,7 +56,7 @@ public class LibraryUI {
         }
         System.out.println("--------------------------------------------------------------------------------");
     }
-
+// formatting by gemini ai
     public void startSearch() {
     System.out.print("\nEnter text to search for: ");
     String query = scanner.nextLine().toLowerCase();
@@ -88,5 +91,7 @@ public class LibraryUI {
             r.nextInt(410) + 1
         );
         navigateTo(randomAddr);
+
+        //with contribution from gemini ai
     }
 }

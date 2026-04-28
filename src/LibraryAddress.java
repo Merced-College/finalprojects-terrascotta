@@ -1,3 +1,6 @@
+// takes user input and generates a LibraryAddress object, which is used to generate the page text
+
+
 public class LibraryAddress {
     private String hexagonId; 
     private int wall; 
