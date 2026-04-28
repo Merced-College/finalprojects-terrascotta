@@ -6,7 +6,8 @@ public class LibraryUI {
     private Scanner scanner = new Scanner(System.in);
     private PageGenerator generator = new PageGenerator();
     private Stack<LibraryAddress> history = new Stack<>(); 
-
+    private SearchEngine search = new SearchEngine();
+    
     public void startNavigation() {
         System.out.println("\n--- Enter Library Coordinates ---");
         System.out.print("Hexagon ID (Text/Number): ");
@@ -54,12 +55,26 @@ public class LibraryUI {
     }
 
     public void startSearch() {
-        System.out.print("\nEnter text to search for: ");
-        String query = scanner.nextLine();
-        System.out.println("Searching the infinite shelves...");
-        // This will link to the SearchEngine class below
-        System.out.println("Result: Found in Hexagon 'Search-Result-1', Wall 2, Page 10...");
+    System.out.print("\nEnter text to search for: ");
+    String query = scanner.nextLine().toLowerCase();
+    
+    // Validate the input (only letters/commas/periods/spaces)
+    if (!query.matches("[a-z, .]+")) {
+        System.out.println("Error: The library only contains lowercase letters, spaces, commas, and periods.");
+        return;
     }
+
+    System.out.println("Calculating the precise coordinates...");
+    LibraryAddress foundAt = search.findAddressForText(query);
+    
+    System.out.println("Result: Found!");
+    System.out.println("Location: " + foundAt.toString());
+    
+    System.out.print("Would you like to navigate there now? (y/n): ");
+    if (scanner.nextLine().equalsIgnoreCase("y")) {
+        navigateTo(foundAt);
+    }
+}
 
     // ALGORITHM #2: Random Generation Logic
     public void jumpToRandom() {
