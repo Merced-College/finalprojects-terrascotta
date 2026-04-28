@@ -14,7 +14,7 @@ public class SearchEngine {
             value = value.multiply(base).add(BigInteger.valueOf(charVal));
         }
 
-        // The Hex ID literally IS the math representation of the word!
+        // The Hex ID literally IS the math representation of the word
         String hexId = value.toString(16);
 
         // Assign random wall/shelf/vol for the rest of the address
