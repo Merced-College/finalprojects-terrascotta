@@ -1,17 +1,24 @@
+import java.math.BigInteger;
 import java.util.Random;
 
 public class SearchEngine {
-    private Random rand = new Random();
 
     public LibraryAddress findAddressForText(String text) {
-        // Create a random location based on the text
-        String hexId = Integer.toHexString(text.hashCode() & 0xFFFFFF);
-        int wall = rand.nextInt(4) + 1;
-        int shelf = rand.nextInt(5) + 1;
-        int volume = rand.nextInt(32) + 1;
-        int page = rand.nextInt(410) + 1;
+        String ALPHABET = "abcdefghijklmnopqrstuvwxyz, .";
+        BigInteger base = BigInteger.valueOf(29);
+        BigInteger value = BigInteger.ZERO;
 
-        // Return the address WITH the search text attached at the end
-        return new LibraryAddress(hexId, wall, shelf, volume, page, text);
+        // Turn the text into a massive Base-29 number
+        for (int i = 0; i < text.length(); i++) {
+            int charVal = ALPHABET.indexOf(text.charAt(i));
+            value = value.multiply(base).add(BigInteger.valueOf(charVal));
+        }
+
+        // The Hex ID literally IS the math representation of the word!
+        String hexId = value.toString(16);
+
+        // Assign random wall/shelf/vol for the rest of the address
+        Random r = new Random();
+        return new LibraryAddress(hexId, r.nextInt(4)+1, r.nextInt(5)+1, r.nextInt(32)+1, r.nextInt(410)+1);
     }
 }
